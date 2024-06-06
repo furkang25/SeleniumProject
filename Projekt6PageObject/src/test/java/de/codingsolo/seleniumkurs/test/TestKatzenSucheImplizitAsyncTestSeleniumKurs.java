@@ -11,8 +11,9 @@ import org.openqa.selenium.edge.EdgeDriver;
 import de.codingsolo.seleniumkurs.pages.SeleniumKursLoginPage;
 import de.codingsolo.seleniumkurs.pages.SeleniumKursKatzebSuchenPage;
 import de.codingsolo.seleniumkurs.pages.SeleniumKursHomePage;
+import de.codingsolo.seleniumkurs.pages.SeleniumKursTestApplikationenPage;
 
-public class TestForm1SeleniumKurs {
+public class TestKatzenSucheImplizitAsyncTestSeleniumKurs {
 
     // WebDriver-Instanz
     WebDriver driver;
@@ -29,11 +30,14 @@ public class TestForm1SeleniumKurs {
         // Initialisiere den EdgeDriver
         driver = new EdgeDriver();
 
+        // Setze eine implizite Wartezeit von 2 Sekunden
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
+        // Maximiere das Browserfenster
+        driver.manage().window().maximize();
+
         // Öffne die Webseite für den Selenium-Kurs
         driver.get("https://seleniumkurs.codingsolo.de");
-
-        // Warte 5 Sekunden, um sicherzustellen, dass die Seite vollständig geladen ist
-        Thread.sleep(5000);
     }
 
     // Diese Methode wird nach jedem Test ausgeführt
@@ -42,14 +46,13 @@ public class TestForm1SeleniumKurs {
         // Ausgabe zur Konsole, um das Ende des Tests zu markieren
         System.out.println("Test abgeschlossen");
         
-        // Schließt den Browser
+        // Schließt den Browser (auskommentiert für Debugging-Zwecke)
         // driver.close();
     }
 
     // Testmethode für den fehlschlagenden Login
     @Test
     public void testLogin() {
-
         // Initialisiere die Login-Seite und gebe die Zugangsdaten ein
         SeleniumKursLoginPage loginPage = new SeleniumKursLoginPage(driver);
         loginPage.zugangsdatenEingeben("selenium101", "codingsolo");
@@ -62,28 +65,22 @@ public class TestForm1SeleniumKurs {
         // Klicke auf den Link zur Selenium Test Applikation
         homePage.seleniumTestAppLinkAnkilcken();
 
-        // Initialisiere die Test Applikationen-Seite und klicke auf Test Form 1
+        // Initialisiere die Seite der Testapplikationen und klicke auf das Beispiel zur Katzensuche
         SeleniumKursTestApplikationenPage testAppPage = new SeleniumKursTestApplikationenPage(driver);
-        testAppPage.testForm1anklicken();
+        testAppPage.katzenSucheBeispielAnklicken();
 
-        // Initialisiere die Test Form 1-Seite
-        SeleniumKursTestForm1Page testForm1Page = new SeleniumKursTestForm1Page(driver);
-        testForm1Page.betreffEingeben("Automatischer Test");
-        testForm1Page.nameEingeben("Dieter");
+        // Initialisiere die Katzensuche-Seite und lese die Beschreibung aus
+        SeleniumKursKatzebSuchenPage katzenPage = new SeleniumKursKatzebSuchenPage(driver);
+        String beschreibung = katzenPage.beschreibungAuslesen();
+        String srcLinkKatzenBild1 = katzenPage.srcLinkImgKatze1Auslesen();
 
-        testForm1Page.firmaInBox1Auswaehlen(new int [] {2,4,6});
-        testForm1Page.firmenUebernehmen();
-        testForm2Page.firmaInBox1Auswaehlen(new int [] {2});
-        testForm1Page.ausgewaehlteFirmenVerschieben();
+        // Navigiere zur nächsten Seite und gebe die Anzahl der Bilder ein
+        katzenPage.nextPage();
+        katzenPage.anzahlBildereingeben("6");
+        String srcLinkKatzenBild2 = katzenPage.srcLinkImgKatze2Auslesen();
 
-        testForm1Page.formularSpeichern();
-
-        // Überprüfe, ob die Erfolgsmeldung und das erste Listenelement korrekt sind
-        String erfolgsMeldung = testForm1Page.statusMeldungAuslesen();
-        assertTrue(erfolgsMeldung.contains("Java Grundlagen Kurs"));
-
-        String erstesElement = testForm1Page.erstesListenElementAuslesen();
-        assertEquals(erstesElement, "Magazzini Alimentari Riuniti");
+        // Überprüfe, ob die Links der Bilder die erwarteten Zeichenfolgen enthalten
+        assertTrue(srcLinkKatzenBild1.contains("-ssxkBCAy"));
+        assertTrue(srcLinkKatzenBild2.contains("gnQoH9Yqb"));
     }
-
 }

@@ -9,6 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 import de.codingsolo.seleniumkurs.pages.SeleniumKursLoginPage;
+import de.codingsolo.seleniumkurs.pages.SeleniumKursKatzebSuchenPage;
+import de.codingsolo.seleniumkurs.pages.SeleniumKursHomePage;
 
 public class TestLoginSeleniumKursFireFox {
 

@@ -1,12 +1,17 @@
 // Importiere die notwendigen Klassen für die Unit-Tests und Selenium
+package de.codingsolo.seleniumkurs.test;
+
 import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.support.ui.Select;
+
+import de.codingsolo.seleniumkurs.pages.SeleniumKursLoginPage;
+import de.codingsolo.seleniumkurs.pages.SeleniumKursKatzebSuchenPage;
+import de.codingsolo.seleniumkurs.pages.SeleniumKursHomePage;
 
 public class TestNavigationSeleniumKursFireFox {
     

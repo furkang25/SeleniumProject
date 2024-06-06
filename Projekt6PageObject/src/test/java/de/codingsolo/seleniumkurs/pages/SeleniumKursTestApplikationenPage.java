@@ -18,6 +18,9 @@ public class SeleniumKursTestApplikationenPage {
     @FindBy(linkText = "Selenium Test Form1")
     private WebElement linkTestForm1;
 
+    @FindBy(id ="Katzensuche Testseite (AJAX)")
+    private WebElement linkKatzenSuche;
+
     // Konstruktor zur Initialisierung der Seite und der WebElemente
     public SeleniumKursTestApplikationenPage(WebDriver driver) {
         // Weist die übergebene WebDriver-Instanz der Instanzvariable zu
@@ -34,5 +37,9 @@ public class SeleniumKursTestApplikationenPage {
     // Methode zum Klicken auf den Link zu "Selenium Test Form1"
     public void testForm1anklicken() {
         linkTestForm1.click();
+    }
+
+    public void katzenSucheBeispielAnklicken() {
+        linkKatzenSuche.click();
     }
 }
