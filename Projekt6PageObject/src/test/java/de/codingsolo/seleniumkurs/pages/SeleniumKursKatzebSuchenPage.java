@@ -1,9 +1,12 @@
 package de.codingsolo.seleniumkurs.pages;
 
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
-
-public class SeleniumKursKatzebSuchenPage(WebDriver driver) {
+public class SeleniumKursKatzebSuchenPage {
 
     WebDriver driver;
 
@@ -16,10 +19,10 @@ public class SeleniumKursKatzebSuchenPage(WebDriver driver) {
     @FindBy(id ="gnQoH9Yqb")
     private WebElement imgKatze2;
 
-    @FindBy(linkNext ="Next")
+    @FindBy(linkText ="Next")
     private WebElement linkNext;
 
-    @FindBy(linkNext ="Previous")
+    @FindBy(linkText ="Previous")
     private WebElement linkPrevious;
 
     @FindBy(id ="anzahlSelect")

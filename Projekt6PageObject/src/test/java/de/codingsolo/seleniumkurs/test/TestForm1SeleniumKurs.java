@@ -9,7 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 import de.codingsolo.seleniumkurs.pages.SeleniumKursLoginPage;
-import de.codingsolo.seleniumkurs.pages.SeleniumKursKatzebSuchenPage;
+import de.codingsolo.seleniumkurs.pages.SeleniumKursTestApplikationenPage;
+import de.codingsolo.seleniumkurs.pages.SeleniumKursTestForm1Page;
 import de.codingsolo.seleniumkurs.pages.SeleniumKursHomePage;
 
 public class TestForm1SeleniumKurs {
@@ -60,7 +61,7 @@ public class TestForm1SeleniumKurs {
         homePage.menuAusklappen();
 
         // Klicke auf den Link zur Selenium Test Applikation
-        homePage.seleniumTestAppLinkAnkilcken();
+        homePage.linkSeleniumTestAppLinkAnklicken();
 
         // Initialisiere die Test Applikationen-Seite und klicke auf Test Form 1
         SeleniumKursTestApplikationenPage testAppPage = new SeleniumKursTestApplikationenPage(driver);
@@ -73,6 +74,9 @@ public class TestForm1SeleniumKurs {
 
         testForm1Page.firmaInBox1Auswaehlen(new int [] {2,4,6});
         testForm1Page.firmenUebernehmen();
+        
+        SeleniumKursTestForm1Page testForm2Page = new SeleniumKursTestForm1Page(driver);
+
         testForm2Page.firmaInBox1Auswaehlen(new int [] {2});
         testForm1Page.ausgewaehlteFirmenVerschieben();
 

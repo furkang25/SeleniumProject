@@ -2,12 +2,13 @@ package de.codingsolo.seleniumkurs.test;
 
 import static org.junit.Assert.*;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-
 import de.codingsolo.seleniumkurs.pages.SeleniumKursLoginPage;
 import de.codingsolo.seleniumkurs.pages.SeleniumKursKatzebSuchenPage;
 import de.codingsolo.seleniumkurs.pages.SeleniumKursHomePage;
@@ -63,7 +64,7 @@ public class TestKatzenSucheImplizitAsyncTestSeleniumKurs {
         homePage.menuAusklappen();
 
         // Klicke auf den Link zur Selenium Test Applikation
-        homePage.seleniumTestAppLinkAnkilcken();
+        homePage.linkSeleniumTestAppLinkAnklicken();
 
         // Initialisiere die Seite der Testapplikationen und klicke auf das Beispiel zur Katzensuche
         SeleniumKursTestApplikationenPage testAppPage = new SeleniumKursTestApplikationenPage(driver);
@@ -72,12 +73,15 @@ public class TestKatzenSucheImplizitAsyncTestSeleniumKurs {
         // Initialisiere die Katzensuche-Seite und lese die Beschreibung aus
         SeleniumKursKatzebSuchenPage katzenPage = new SeleniumKursKatzebSuchenPage(driver);
         String beschreibung = katzenPage.beschreibungAuslesen();
-        String srcLinkKatzenBild1 = katzenPage.srcLinkImgKatze1Auslesen();
+        String srcLinkKatzenBild1 = katzenPage.srcLinkImgkatze1Auslesen();
+
+        // Überprüfe, ob die Beschreibung nicht leer ist
+        assertFalse(beschreibung.isEmpty());
 
         // Navigiere zur nächsten Seite und gebe die Anzahl der Bilder ein
         katzenPage.nextPage();
         katzenPage.anzahlBildereingeben("6");
-        String srcLinkKatzenBild2 = katzenPage.srcLinkImgKatze2Auslesen();
+        String srcLinkKatzenBild2 = katzenPage.srcLinkImgkatze2Auslesen();
 
         // Überprüfe, ob die Links der Bilder die erwarteten Zeichenfolgen enthalten
         assertTrue(srcLinkKatzenBild1.contains("-ssxkBCAy"));

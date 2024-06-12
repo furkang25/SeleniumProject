@@ -2,7 +2,6 @@
 package de.codingsolo.seleniumkurs.test;
 
 import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 
 import de.codingsolo.seleniumkurs.pages.SeleniumKursLoginPage;
-import de.codingsolo.seleniumkurs.pages.SeleniumKursKatzebSuchenPage;
+import de.codingsolo.seleniumkurs.pages.SeleniumKursTestApplikationenPage;
+import de.codingsolo.seleniumkurs.pages.SeleniumKursTestForm1Page;
 import de.codingsolo.seleniumkurs.pages.SeleniumKursHomePage;
 
 public class TestNavigationSeleniumKursFireFox {
@@ -61,7 +61,7 @@ public class TestNavigationSeleniumKursFireFox {
         homePage.menuAusklappen();
 
         // Klicke auf den Link zur Selenium Test Applikation
-        homePage.seleniumTestAppLinkAnkilcken();
+        homePage.linkSeleniumTestAppLinkAnklicken();
 
         // Initialisiere die Test Applikationen-Seite und klicke auf Test Form 1
         SeleniumKursTestApplikationenPage testAppPage = new SeleniumKursTestApplikationenPage(driver);
